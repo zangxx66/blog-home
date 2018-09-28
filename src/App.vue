@@ -1,11 +1,11 @@
 <template>
   <div id="app">
     <div class="appbar">
-      <mu-appbar style="width:100%" color="primary">
+      <mu-appbar style="width:100%" :z-depth="24">
         <mu-button icon slot="left" @click="openDrawer = !openDrawer">
           <mu-icon value="menu"></mu-icon>
         </mu-button>
-
+        <span style="margin-left:256px;cursor: context-menu;color:#fff;">Satania.app</span>
         <div slot="right">
           <mu-button icon href="https://weibo.com/u/2576211917">
             <i class="fa fa-weibo"></i>
@@ -17,9 +17,18 @@
       </mu-appbar>
     </div>
 
+    <div class="blur"></div>
+
     <router-view></router-view>
 
-    <mu-drawer :open.sync="openDrawer" :docked="true" :right="false" class="drawer">
+    <context-menu class="right-menu" 
+    :target="contextMenuTarget" 
+    :show="contextMenuVisible" 
+    @update:show="(show) => contextMenuVisible = show">
+    <a href="javascript:;" @click="copyMsg">右键？不存在的</a>
+</context-menu>
+
+    <mu-drawer :open.sync="openDrawer" :docked="true" :right="false" :z-depth="24" class="drawer">
       <mu-list class="mulist">
         <mu-list-item :style="{height:'100px'}">
           <mu-row class="avatar-box">
@@ -52,34 +61,64 @@
 </template>
 
 <script>
+import { component as VueContextMenu } from "@xunlei/vue-context-menu";
+
 export default {
-  name: 'app',
-  data () {
+  name: "app",
+  data() {
     return {
-      openDrawer: true
+      openDrawer: true,
+      contextMenuTarget: document.body,
+      contextMenuVisible: false
+    };
+  },
+  mounted() {
+    document.querySelector(".blur").style.height = window.innerHeight + "px";
+  },
+  methods: {
+    copyMsg() {
+      this.$alert('你就不能做点什么吗！你不是天使吗？！')
+      this.contextMenuVisible = false;
     }
+  },
+  components: {
+    "context-menu": VueContextMenu
   }
-}
+};
 </script>
 
 <style>
 body {
   margin: 0;
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
+  overflow: hidden;
+}
+
+.blur {
+  background: url("../static/img/bg.jpg") no-repeat round;
+  left: 256px;
+  filter: blur(10px);
+  width: 100%;
+  z-index: 0;
+  position: absolute;
 }
 
 #app {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #2c3e50;
+  z-index: 1;
 }
 </style>
 <style scoped>
+.mu-appbar {
+  background-color: transparent;
+}
 .mulist {
   height: 100%;
-  top:10%;
+  top: 10%;
 }
-.avatar-box{
+.avatar-box {
   clear: both;
   margin: auto;
   display: block;
@@ -87,27 +126,58 @@ body {
 .textcenter {
   text-align: center;
 }
-.satanya{
-  font-size:20px;
-  font-weight:500;
+.satanya {
+  font-size: 20px;
+  font-weight: 500;
 }
-.drawer{
+.drawer {
   overflow: hidden;
 }
-.comment{
-  color:green;
+.comment {
+  color: green;
 }
-.mu-appbar .mu-icon-button .fa-weibo{
-  color:red;
+.mu-appbar .mu-icon-button .fa-weibo {
+  color: red;
 }
-.mu-appbar .mu-icon-button .fa-github{
-  color:#212121;
+.mu-appbar .mu-icon-button .fa-github {
+  color: #212121;
 }
-.appbar{
+.appbar {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   z-index: 1;
+}
+.right-menu {
+  position: fixed;
+  background: #fff;
+  border: solid 1px rgba(0, 0, 0, 0.2);
+  border-radius: 3px;
+  z-index: 999;
+  display: none;
+}
+.right-menu a {
+  width: auto;
+  height: 28px;
+  line-height: 28px;
+  text-align: center;
+  display: block;
+  color: #1a1a1a;
+}
+.right-menu a:hover {
+  background: #eee;
+  color: #fff;
+}
+.right-menu {
+  border: 1px solid #eee;
+  box-shadow: 0 0.5em 1em 0 rgba(0, 0, 0, 0.1);
+  border-radius: 1px;
+}
+.right-menu a {
+  padding: 2px;
+}
+.right-menu a:hover {
+  background: #ff4081;
 }
 </style>

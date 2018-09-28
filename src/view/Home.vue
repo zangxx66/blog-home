@@ -53,6 +53,10 @@ export default {
 <style scoped>
 .home-box {
   margin-left: 256px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  scroll-behavior: smooth;
 }
 .paper-box{
     margin-top: 5%;
