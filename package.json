@@ -15,6 +15,7 @@
     "@xunlei/vue-context-menu": "^1.0.2",
     "axios": "^0.18.0",
     "eslint-config-prettier": "^3.1.0",
+    "leancloud-storage": "^3.10.0",
     "less-loader": "^4.1.0",
     "material-icons": "^0.2.3",
     "muse-ui": "^3.0.1",
@@ -28,6 +29,7 @@
     "vue": "^2.5.2",
     "vue-blu": "^0.1.9",
     "vue-router": "^3.0.1",
+    "vue-social-share": "0.0.3",
     "vuex": "^3.0.1"
   },
   "devDependencies": {
@@ -40,7 +42,7 @@
     "babel-preset-stage-2": "^6.24.1",
     "babel-register": "^6.26.0",
     "chalk": "^2.1.0",
-    "compression-webpack-plugin": "^2.0.0",
+    "compression-webpack-plugin": "^1.1.2",
     "connect-history-api-fallback": "^1.4.0",
     "copy-webpack-plugin": "^4.1.1",
     "css-loader": "^0.28.7",

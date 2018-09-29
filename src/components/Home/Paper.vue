@@ -5,7 +5,7 @@
                 {{item.title}}
             </div>
             <div class="summary">
-                
+                {{item.summary}}
             </div>
         </div>
     </mu-container>
@@ -13,9 +13,6 @@
 <script>
 export default {
   props: ["item"],
-  mounted() {
-    document.querySelector(".summary").innerHTML = this.item.summary;
-  },
   methods: {
     openDetail: function(param) {
       this.$router.push({ name: "ArticleDetail", params: { id: param } });
