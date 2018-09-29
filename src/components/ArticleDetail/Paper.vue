@@ -33,6 +33,8 @@ export default {
       item: [],
       vueValine: this.$store.getters.getValine(),
       config:{
+          url:window.location.href,
+          source:window.location.href,
           sites:['qzone','qq','weibo','google','facebook','twitter'],
           disabled:['wechat','douban']
       }
