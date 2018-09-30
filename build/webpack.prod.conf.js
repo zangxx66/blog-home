@@ -100,9 +100,9 @@ const webpackConfig = merge(baseWebpackConfig, {
     ]),
     // service worker caching
     new SWPrecacheWebpackPlugin({
-      cacheId: 'vue-project',
+      cacheId: 'satanina.app',
       filename: 'service-worker.js',
-      staticFileGlobs: ['dist/**/*.{js,html,css}'],
+      staticFileGlobs: ['dist/**/*.{js,html,css,png.jpg.gif,eot,svg,ttf,woff,ico}'],
       minify: true,
       stripPrefix: 'dist/'
     })

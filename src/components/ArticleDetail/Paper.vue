@@ -33,8 +33,8 @@ export default {
       item: [],
       vueValine: this.$store.getters.getValine(),
       config:{
-          url:window.location.href,
-          source:window.location.href,
+          url:'https://www.satania.app' + this.$route.path,
+          source:'https://www.satania.app' + this.$route.path,
           sites:['qzone','qq','weibo','google','facebook','twitter'],
           disabled:['wechat','douban']
       }
@@ -54,7 +54,7 @@ export default {
   methods: {
     init: function(param) {
       this.item = param
-      document.querySelector('.detail-context').innerHTML = param.context
+      document.querySelector('.detail-context').innerHTML = decodeURIComponent(param.context)
     }
   },
   filters: {

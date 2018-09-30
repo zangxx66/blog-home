@@ -3,12 +3,12 @@ import Vuex from 'vuex'
 
 Vue.use(Vuex)
 
-let httpUrl = 'http://127.0.0.1:666/api/'
-// if (Object.is(process.env.NODE_ENV, 'production')) {
-//   httpUrl = 'http://127.0.0.1:666/api/'
-// } else {
-//   httpUrl = 'http://localhost:5000/api/'
-// }
+let httpUrl = 'https://api.satania.app/api/'
+if (Object.is(process.env.NODE_ENV, 'production')) {
+  httpUrl = 'https://api.satania.app/api/'
+} else {
+  httpUrl = 'http://127.0.0.1:666/api/'
+}
 
 console.log(process.env.NODE_ENV)
 
