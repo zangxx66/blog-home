@@ -15,6 +15,7 @@ export default {
   props: ["item"],
   methods: {
     openDetail: function(param) {
+      this.$progress.start()
       this.$router.push({ name: "ArticleDetail", params: { id: param } });
     }
   }
@@ -25,6 +26,7 @@ export default {
   cursor: pointer;
   background: #fff;
   border-radius: 10px;
+  margin 10px
 }
 .paper-article:hover {
   box-shadow: 0 11px 15px -7px rgba(0, 0, 0, 0.2),

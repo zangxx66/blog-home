@@ -17,12 +17,15 @@ import 'material-icons/css/material-icons.css'
 import 'muse-ui-message/dist/muse-ui-message.css'
 import 'muse-ui-progress/dist/muse-ui-progress.css'
 import 'vue-blu/dist/css/vue-blu.min.css'
-import 'vue-social-share/dist/client.css';
+import 'vue-social-share/dist/client.css'
 
 Vue.config.productionTip = false
 Vue.use(MuseUI)
 Vue.use(Message)
-Vue.use(NPorgress)
+Vue.use(NPorgress,{
+  color:'secondary',
+  size:3
+})
 Vue.use(VueBlu)
 Vue.use(Share)
 

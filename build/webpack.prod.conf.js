@@ -102,7 +102,7 @@ const webpackConfig = merge(baseWebpackConfig, {
     new SWPrecacheWebpackPlugin({
       cacheId: 'satanina.app',
       filename: 'service-worker.js',
-      staticFileGlobs: ['dist/**/*.{js,html,css,png.jpg.gif,eot,svg,ttf,woff,ico}'],
+      staticFileGlobs: ['dist/**/*.{js,html,css,png,jpg,gif,eot,svg,ttf,woff,ico}'],
       minify: true,
       stripPrefix: 'dist/'
     })

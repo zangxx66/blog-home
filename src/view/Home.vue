@@ -21,19 +21,21 @@ export default {
     }
   },
   mounted() {
+    this.$progress.start()
       document.querySelector('.home-box').style.height = window.innerHeight + 'px'
     this.init(1)
   },
   methods: {
     init: function(page) {
       const apiUrl = this.reqUrl + 'Article/Get'
-      Axios.get(apiUrl, { Page: page })
+      Axios.get(apiUrl, {params:{ Page: page }})
         .then(response => {
           if (response.status === 200) {
             const callback = response.data
             this.total = callback.total
             this.current = callback.current
             this.items = callback.data
+            this.$progress.done()
           } else {
             this.$alert('获取列表失败')
           }
