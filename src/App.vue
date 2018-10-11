@@ -47,14 +47,14 @@
         <mu-list-item button :to="'/'">
           <mu-list-item-title class="textcenter">首页</mu-list-item-title>
         </mu-list-item>
-        <mu-list-item button :to="'/Message'">
+        <!-- <mu-list-item button :to="'/Message'">
           <mu-list-item-title class="textcenter comment">&lt;!-- 留言 -- &gt;</mu-list-item-title>
         </mu-list-item>
         <mu-list-item button :to="'/Link'">
           <mu-list-item-title class="textcenter comment">&lt;!-- 友链 -- &gt;</mu-list-item-title>
-        </mu-list-item>
+        </mu-list-item> -->
         <mu-list-item button :to="'/About'">
-          <mu-list-item-title class="textcenter comment">&lt;!-- 关于我 -- &gt;</mu-list-item-title>
+          <mu-list-item-title class="textcenter">关于我</mu-list-item-title>
         </mu-list-item>
       </mu-list>
     </mu-drawer>

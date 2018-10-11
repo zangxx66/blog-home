@@ -7,7 +7,12 @@
                 <mu-badge :content="item.category" color="secondary" class="badge"></mu-badge>
             </div>
             <div class="detail-info">
-                {{item.createDate | filterTime}}
+                {{item.createDate | filterTime}}&nbsp;&nbsp;
+                <!-- id 将作为查询条件 -->
+<span id="item.id" class="leancloud-visitors" data-flag-title="item.title">
+    <em class="post-meta-item-text">阅读量 </em>
+    <i class="leancloud-visitors-count"></i>
+</span>
             </div>
             <mu-divider></mu-divider>
             <div class="detail-context">
@@ -26,46 +31,50 @@
     </mu-container>
 </template>
 <script>
-import Valine from 'valine'
+import Valine from "valine";
 export default {
   data() {
     return {
       item: [],
       vueValine: this.$store.getters.getValine(),
-      config:{
-          url:'https://www.satania.app' + this.$route.path,
-          source:'https://www.satania.app' + this.$route.path,
-          sites:['qzone','qq','weibo','google','facebook','twitter'],
-          disabled:['wechat','douban']
+      config: {
+        url: "https://www.satania.app" + this.$route.path,
+        source: "https://www.satania.app" + this.$route.path,
+        sites: ["qzone", "qq", "weibo", "google", "facebook", "twitter"],
+        disabled: ["wechat", "douban"]
       }
-    }
-  },
-  mounted() {
-    window.AV = require('leancloud-storage')
-    new Valine({
-      el: '#valine',
-      appId: this.vueValine.appId,
-      appKey: this.vueValine.appKey,
-      avatar: 'mp',
-      visitor: true,
-      placeholder:'支持使用Markdown语法！'
-    })
+    };
   },
   methods: {
     init: function(param) {
-      this.item = param
-      document.querySelector('.detail-context').innerHTML = decodeURIComponent(param.context)
+      this.item = param;
+      document.querySelector(".leancloud-visitors").id = this.config.url;
+      document
+        .querySelector(".leancloud-visitors")
+        .setAttribute("data-flag-title", this.item.title);
+      document.querySelector(".detail-context").innerHTML = decodeURIComponent(
+        param.context
+      );
+      window.AV = require("leancloud-storage");
+      new Valine({
+        el: "#valine",
+        appId: this.vueValine.appId,
+        appKey: this.vueValine.appKey,
+        avatar: "mp",
+        visitor: true,
+        placeholder: "支持使用Markdown语法！"
+      });
     }
   },
   filters: {
     filterTime: function(param) {
-      let result = String(param)
-      result = result.replace(/T/g, ' ')
-      result = result.substring(0, 19)
-      return result
+      let result = String(param);
+      result = result.replace(/T/g, " ");
+      result = result.substring(0, 19);
+      return result;
     }
   }
-}
+};
 </script>
 <style scoped>
 .detail-paper {
@@ -94,15 +103,15 @@ export default {
   border-radius: 10px;
   margin-bottom: 50px;
 }
-#valine{
-    padding: 15px;
+#valine {
+  padding: 15px;
 }
-.share-box{
-    margin-top:15px;
-    background: #fff;
-    border-radius: 10px;
+.share-box {
+  margin-top: 15px;
+  background: #fff;
+  border-radius: 10px;
 }
-.share{
-    margin: 15px;
+.share {
+  margin: 15px;
 }
 </style>

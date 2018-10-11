@@ -33,6 +33,7 @@ export default {
             const callback = response.data
             this.items = callback
             this.$refs.detail.init(this.items)
+            this.$progress.done()
           } else {
             this.$alert('获取实体报错,' + response.status)
           }
