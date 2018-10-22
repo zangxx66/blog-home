@@ -38,6 +38,8 @@ export default {
       item: [],
       vueValine: this.$store.getters.getValine(),
       config: {
+        title:'萨塔喵的后院',
+        image:'https://www.satania.app/static/img/avatar.jpg',
         url: "https://www.satania.app" + this.$route.path,
         source: "https://www.satania.app" + this.$route.path,
         sites: ["qzone", "qq", "weibo", "google", "facebook", "twitter"],
@@ -48,6 +50,7 @@ export default {
   methods: {
     init: function(param) {
       this.item = param;
+      this.config.title = this.item.title;
       document.querySelector(".leancloud-visitors").id = this.config.url;
       document
         .querySelector(".leancloud-visitors")
@@ -62,7 +65,8 @@ export default {
         appKey: this.vueValine.appKey,
         avatar: "mp",
         visitor: true,
-        placeholder: "支持使用Markdown语法！"
+        placeholder: "支持使用Markdown语法！",
+        path:"https://www.satania.app" + this.$route.path
       });
     }
   },
@@ -96,6 +100,15 @@ export default {
 }
 .detail-context {
   padding: 20px;
+}
+.ql-syntax {
+  background-color: #23241f;
+  color: #f8f8f2;
+  overflow: visible;
+  white-space: pre-wrap;
+  margin-bottom: 5px;
+  margin-top: 5px;
+  padding: 5px 10px;
 }
 .valine-paper {
   margin-top: 15px;
