@@ -5,7 +5,7 @@
         <mu-button icon slot="left" @click="openDrawer = !openDrawer">
           <mu-icon value="menu"></mu-icon>
         </mu-button>
-        <span style="margin-left:256px;cursor: context-menu;color:#fff;">Satania.app</span>
+        <span style="cursor: context-menu;color:#fff;">Satania.app</span>
         <div slot="right">
           <a tabindex="0" href="https://weibo.com/u/2576211917" target="_blank" class="mu-button mu-icon-button link-hover">
             <div class="mu-button-wrapper">
@@ -29,7 +29,7 @@
       <a href="javascript:;" @click="copyMsg">右键？不存在的</a>
     </context-menu>
 
-    <mu-drawer :open.sync="openDrawer" :docked="true" :right="false" :z-depth="24" class="drawer">
+    <mu-drawer :open.sync="openDrawer" :docked="false" :right="false" :z-depth="24" class="drawer">
       <mu-list class="mulist">
         <mu-list-item :style="{height:'100px'}">
           <mu-row class="avatar-box">
@@ -68,7 +68,7 @@ export default {
   name: 'app',
   data() {
     return {
-      openDrawer: true,
+      openDrawer: false,
       contextMenuTarget: document.body,
       contextMenuVisible: false
     }
@@ -96,8 +96,9 @@ body {
 }
 
 .blur {
-  background: url('../static/img/bg.jpg') no-repeat round;
-  left: 256px;
+  background: url('../static/img/bg.jpg') no-repeat center center;
+  background-size: cover;
+  background-attachment: fixed;
   filter: blur(10px);
   width: 100%;
   z-index: 0;

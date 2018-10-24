@@ -6,7 +6,7 @@
                     <div class="about-title">
                         关于
                         <br>
-                        <span style="font-size:10px;font-weight:400;">v0.1.0 Beta</span>
+                        <span style="font-size:10px;font-weight:400;">v0.1.5 Beta</span>
                     </div>
                     <br>
                     <div class="about-tag">

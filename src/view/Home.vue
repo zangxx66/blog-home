@@ -7,9 +7,9 @@
     </div>
 </template>
 <script>
-import Axios from 'axios'
-import Paper from '../components/Home/Paper'
-import Pagination from '../components/Home/Pagination'
+import Axios from "axios";
+import Paper from "../components/Home/Paper";
+import Pagination from "../components/Home/Pagination";
 
 export default {
   data() {
@@ -18,49 +18,50 @@ export default {
       items: [],
       total: 0,
       current: 1
-    }
+    };
   },
   mounted() {
-    this.$progress.start()
-      document.querySelector('.home-box').style.height = window.innerHeight + 'px'
-    this.init(1)
+    this.$progress.start();
+    document.querySelector(".home-box").style.height =
+      window.innerHeight + "px";
+    this.init(1);
   },
   methods: {
     init: function(page) {
-      const apiUrl = this.reqUrl + 'Article/Get'
-      Axios.get(apiUrl, {params:{ Page: page }})
+      const apiUrl = this.reqUrl + "Article/Get";
+      Axios.get(apiUrl, { params: { Page: page } })
         .then(response => {
           if (response.status === 200) {
-            const callback = response.data
-            this.total = callback.total
-            this.current = callback.current
-            this.items = callback.data
-            this.$progress.done()
+            const callback = response.data;
+            this.total = callback.total;
+            this.current = callback.current;
+            this.items = callback.data;
+            this.$progress.done();
           } else {
-            this.$alert('获取列表失败')
+            this.$alert("获取列表失败");
           }
         })
         .catch(err => {
-          this.$alert('获取列表异常')
-          console.error(err)
-        })
+          this.$alert("获取列表异常");
+          console.error(err);
+        });
     }
   },
   components: {
     Paper,
     Pagination
   }
-}
+};
 </script>
 <style scoped>
 .home-box {
-  margin-left: 256px;
+  left: 50%;
+}
+.paper-box {
+  margin-top: 5%;
   overflow-x: hidden;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   scroll-behavior: smooth;
-}
-.paper-box{
-    margin-top: 5%;
 }
 </style>

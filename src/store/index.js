@@ -3,7 +3,7 @@ import Vuex from 'vuex'
 
 Vue.use(Vuex)
 
-let httpUrl = 'https://api.satania.app:8996/api/'
+let httpUrl = 'https://api.satania.app/api/'
 if (Object.is(process.env.NODE_ENV, 'production')) {
   httpUrl = 'https://api.satania.app/api/'
 } else {

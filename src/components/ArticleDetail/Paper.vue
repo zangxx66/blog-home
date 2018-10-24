@@ -1,6 +1,10 @@
 <template>
     <mu-container>
         <div class="detail-paper">
+          <mu-breadcrumbs>
+          <mu-icon value="forward" slot="divider"></mu-icon>
+          <mu-breadcrumbs-item v-for="item in navs" :key="item.text" :disabled="item.disabled" :to="item.to">{{item.text}}</mu-breadcrumbs-item>
+        </mu-breadcrumbs>
             <div class="detail-title">
                 {{item.title}}
                 &nbsp;
@@ -9,10 +13,10 @@
             <div class="detail-info">
                 {{item.createDate | filterTime}}&nbsp;&nbsp;
                 <!-- id 将作为查询条件 -->
-<span id="item.id" class="leancloud-visitors" data-flag-title="item.title">
-    <em class="post-meta-item-text">阅读量 </em>
-    <i class="leancloud-visitors-count"></i>
-</span>
+                <span id="item.id" class="leancloud-visitors" data-flag-title="item.title">
+                    <em class="post-meta-item-text">阅读量 </em>
+                    <i class="leancloud-visitors-count"></i>
+                </span>
             </div>
             <mu-divider></mu-divider>
             <div class="detail-context">
@@ -36,10 +40,18 @@ export default {
   data() {
     return {
       item: [],
+      navs: [
+        {
+          text: "首页",
+          to: "/",
+          disabled: false
+        },
+        { text: "", disabled: true, to: this.$route.path }
+      ],
       vueValine: this.$store.getters.getValine(),
       config: {
-        title:'萨塔喵的后院',
-        image:'https://www.satania.app/static/img/avatar.jpg',
+        title: "萨塔喵的后院",
+        image: "https://www.satania.app/static/img/avatar.jpg",
         url: "https://www.satania.app" + this.$route.path,
         source: "https://www.satania.app" + this.$route.path,
         sites: ["qzone", "qq", "weibo", "google", "facebook", "twitter"],
@@ -50,7 +62,7 @@ export default {
   methods: {
     init: function(param) {
       this.item = param;
-      this.config.title = this.item.title;
+      this.config.title = this.navs[1].text = this.item.title;
       document.querySelector(".leancloud-visitors").id = this.config.url;
       document
         .querySelector(".leancloud-visitors")
@@ -66,7 +78,7 @@ export default {
         avatar: "mp",
         visitor: true,
         placeholder: "支持使用Markdown语法！",
-        path:"https://www.satania.app" + this.$route.path
+        path: "https://www.satania.app" + this.$route.path
       });
     }
   },

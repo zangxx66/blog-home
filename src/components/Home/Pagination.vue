@@ -1,7 +1,7 @@
 <template>
-    <mu-flex justify-content="center" class="page-box">
+    <div class="page-box">
         <mu-pagination raised circle :total="total" :current.sync="current" @change="page"></mu-pagination>
-    </mu-flex>
+    </div>
 </template>
 <script>
 export default {
