@@ -8,6 +8,7 @@
 <script>
 import Paper from '../components/ArticleDetail/Paper'
 import Axios from 'axios'
+
 export default {
   name: 'ArticleDetail',
   data() {
@@ -51,7 +52,7 @@ export default {
 </script>
 <style scoped>
 .detail-box {
-  margin-left: 256px;
+  left: 50%;
   overflow-x: hidden;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;

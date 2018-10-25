@@ -56,9 +56,6 @@ export default {
 <style scoped>
 .home-box {
   left: 50%;
-}
-.paper-box {
-  margin-top: 5%;
   overflow-x: hidden;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;

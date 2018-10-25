@@ -62,41 +62,48 @@
 </template>
 
 <script>
-import { component as VueContextMenu } from '@xunlei/vue-context-menu'
+import { component as VueContextMenu } from "@xunlei/vue-context-menu";
 
 export default {
-  name: 'app',
+  name: "app",
   data() {
     return {
       openDrawer: false,
       contextMenuTarget: document.body,
       contextMenuVisible: false
-    }
+    };
   },
   mounted() {
-    document.querySelector('.blur').style.height = window.innerHeight + 'px'
+    document.querySelector(".blur").style.height = window.innerHeight + "px";
   },
   methods: {
     copyMsg() {
-      this.$alert('你就不能做点什么吗！你不是天使吗？！')
-      this.contextMenuVisible = false
-    },
+      this.$toast.message('你就不能做点什么吗！你不是天使吗？！')
+      this.contextMenuVisible = false;
+    }
   },
   components: {
-    'context-menu': VueContextMenu
+    "context-menu": VueContextMenu
   }
-}
+};
 </script>
 
 <style>
 body {
   margin: 0;
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
   overflow: hidden;
+  -webkit-text-size-adjust: none;
+  text-size-adjust: none;
+  -moz-text-size-adjust: none;
+  width: 100%;
+  height: 100%;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
 }
 
 .blur {
-  background: url('../static/img/bg.jpg') no-repeat center center;
+  background: url("../static/img/bg.jpg") no-repeat center center;
   background-size: cover;
   background-attachment: fixed;
   filter: blur(10px);
@@ -110,11 +117,12 @@ body {
   -moz-osx-font-smoothing: grayscale;
   color: #2c3e50;
   z-index: 1;
+  margin-top: 60px;
 }
 
 ::-webkit-scrollbar {
-  width: 4px;
-  height: 4px;
+  width: 8px;
+  height: 8px;
 }
 ::-webkit-scrollbar-thumb {
   border-radius: 1em;

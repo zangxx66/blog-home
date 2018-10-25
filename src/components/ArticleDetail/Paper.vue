@@ -36,6 +36,7 @@
 </template>
 <script>
 import Valine from "valine";
+
 export default {
   data() {
     return {
@@ -94,7 +95,7 @@ export default {
 </script>
 <style scoped>
 .detail-paper {
-  margin-top: 15%;
+  margin-top: 60px;
   background: #fff;
   border-radius: 10px;
 }
@@ -112,15 +113,6 @@ export default {
 }
 .detail-context {
   padding: 20px;
-}
-.ql-syntax {
-  background-color: #23241f;
-  color: #f8f8f2;
-  overflow: visible;
-  white-space: pre-wrap;
-  margin-bottom: 5px;
-  margin-top: 5px;
-  padding: 5px 10px;
 }
 .valine-paper {
   margin-top: 15px;

@@ -8,8 +8,8 @@ import router from './router'
 import store from './store'
 import Message from 'muse-ui-message'
 import NPorgress from 'muse-ui-progress'
-import VueBlu from 'vue-blu'
 import Share from 'vue-social-share'
+import Toast from 'muse-ui-toast'
 
 import 'typeface-roboto'
 import 'material-icons/iconfont/material-icons.css'
@@ -26,7 +26,10 @@ Vue.use(NPorgress,{
   color:'secondary',
   size:3
 })
-Vue.use(VueBlu)
+Vue.use(Toast,{
+  position:'top',
+  close:false
+})
 Vue.use(Share)
 
 /* eslint-disable no-new */
