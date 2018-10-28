@@ -47,10 +47,15 @@
         <mu-list-item button :to="'/'">
           <mu-list-item-title class="textcenter">首页</mu-list-item-title>
         </mu-list-item>
-        <!-- <mu-list-item button :to="'/Message'">
-          <mu-list-item-title class="textcenter comment">&lt;!-- 留言 -- &gt;</mu-list-item-title>
-        </mu-list-item>
-        <mu-list-item button :to="'/Link'">
+        <li>
+          <a href="https://pixiv.satania.app" class="mu-item-wrapper" target="_blank">
+          <div class="mu-item">
+            <div class="mu-ripple-wrapper"></div>
+            <div class="mu-item-title textcenter">Pixiv镜像站</div>
+            </div>
+            </a>
+            </li>
+        <!--<mu-list-item button :to="'/Link'">
           <mu-list-item-title class="textcenter comment">&lt;!-- 友链 -- &gt;</mu-list-item-title>
         </mu-list-item> -->
         <mu-list-item button :to="'/About'">
@@ -74,11 +79,12 @@ export default {
     };
   },
   mounted() {
-    document.querySelector(".blur").style.height = window.innerHeight + "px";
+    document.querySelector(".blur").style.height =
+      window.innerHeight - 60 + "px";
   },
   methods: {
     copyMsg() {
-      this.$toast.message('你就不能做点什么吗！你不是天使吗？！')
+      this.$toast.message("你就不能做点什么吗！你不是天使吗？！");
       this.contextMenuVisible = false;
     }
   },

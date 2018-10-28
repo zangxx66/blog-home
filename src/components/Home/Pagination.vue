@@ -15,8 +15,9 @@ export default {
 </script>
 <style scoped>
 .page-box {
-  margin-top: 10px;
-  bottom: 10px;
+  /* margin-top: 10px; */
+  bottom: 0;
+  width: 100%;
   left:50%;
   position: absolute;
   background:none;

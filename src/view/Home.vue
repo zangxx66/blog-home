@@ -2,8 +2,9 @@
     <div class="home-box">
         <div class="paper-box">
             <Paper v-for="item in items" :key="item.id" :item="item"></Paper>
+             <Pagination :total="total" :current="current" v-on:changePage="init"></Pagination>
         </div>
-        <Pagination :total="total" :current="current" v-on:changePage="init"></Pagination>
+        <!-- <Pagination :total="total" :current="current" v-on:changePage="init"></Pagination> -->
     </div>
 </template>
 <script>
@@ -22,8 +23,8 @@ export default {
   },
   mounted() {
     this.$progress.start();
-    document.querySelector(".home-box").style.height =
-      window.innerHeight + "px";
+    document.querySelector(".paper-box").style.height =
+      window.innerHeight - 60 - 32 + "px";
     this.init(1);
   },
   methods: {
@@ -56,6 +57,12 @@ export default {
 <style scoped>
 .home-box {
   left: 50%;
+  width: 100%;
+  transform: translate3d(0px, 0px, 0px);
+  transition: transform ease-in-out 0.38s, visibility 0.38s,
+    -webkit-transform ease-in-out 0.38s;
+}
+.paper-box {
   overflow-x: hidden;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
